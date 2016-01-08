@@ -6,7 +6,7 @@ var colors = require('colors');
 
 var program = new commander.Command('transform');
 
-program.option("-s, --source <type>", "Source to convert from ES5 to ES6 i.e. transform -s src/js");
+// program.option("-s, --source <type>", "Source to convert from ES5 to ES6 i.e. transform -s src/js");
 program.option("-v, --verbose", "Verbose mode");
 
 var pkg = require("../package.json");
@@ -17,9 +17,9 @@ program.parse(process.argv);
 var source = program.source;
 var verbose = program.verbose;
 
-if (!source) {
-  return program.help();
-}
+// if (!source) {
+//   return program.help();
+// }
 
-main(source, {verbose: verbose});
+main({verbose: verbose});
 

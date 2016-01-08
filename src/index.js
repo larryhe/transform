@@ -5,6 +5,7 @@ var b      = recast.types.builders;
 var fs     = require('fs');
 var colors = require('colors');
 var Promise = require('bluebird');
+var pathCache = require('./vault-all');
 
 var middlewares = [
   require('./modules/strip-use-stricts'),
@@ -14,29 +15,17 @@ var middlewares = [
 /////////////
 // Convert //
 /////////////
-function convert(pattern, opts) {
+function convert(opts) {
+    var all = pathCache.paths;
+    var count = 0;
+    for(var file in all){
+        count++
+        processFile(pathCache.baseUrl + all[file] + ".js");
+    }
+    console.log('totally processed '+count+' files');
+}
 
-  var verbose = opts.verbose;
-
-  var glob = require('glob');
-  var path = require('path');
-  var p = pattern;
-  if(!pattern.match(/\.js$/)){
-    p = path.join(pattern, '**/*.js');
-  }
-
-  var files = glob.sync(p);
-
-  if (!files) {
-      console.log("Error globbing files.".red);
-    return;
-  }
-
-  if (!files.length) {
-      console.log("No files to convert.".yellow);
-  }
-
-  files.map(function(file) {
+function processFile(file) {
 
       var code, ast;
       // Read file and parse to ast
@@ -55,17 +44,18 @@ function convert(pattern, opts) {
           console.log(file + " is empty or does not exist.".yellow);
         return;
       }
-     console.log('start processing file=========', file);
       // Run through middlewares
-      ast.program.body = middlewares.reduce(function(body, m) {
-        return m(body, file);
-      }, ast.program.body);
-
-      // Write
-      fs.writeFileSync(file, _.trimLeft(recast.print(ast).code));
+      try{
+        ast.program.body = middlewares.reduce(function(body, m) {
+            return m(body, file);
+        }, ast.program.body);
+        // Write
+        fs.writeFileSync(file, _.trimLeft(recast.print(ast).code));
+        console.log(("successfully transformed "+file).green);
+      }catch(e){
+          console.log(('Error_happening ' + e.message).red);
+      }
     // console.log(recast.print(ast).code);
-    console.log(('transform_success: ' + file + " is converted.").green);
-    });
 }
 
 module.exports = convert;

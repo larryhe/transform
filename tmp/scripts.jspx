@@ -1,0 +1,304 @@
+<jsp:root version="2.0"
+          xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns:c="http://java.sun.com/jsp/jstl/core"
+          xmlns:tiles="http://tiles.apache.org/tags-tiles"
+          xmlns:spring="http://www.springframework.org/tags"
+          xmlns:veevaUi="veevaUi"
+          xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+
+    <!--
+    External variables the set
+    @param packaging {String} - The js package to use for the application.
+    @param enableVideoPlayer {Boolean} - Whether to load the video js.
+    -->
+
+
+    <spring:url var="lessJS" value="/resources/scripts/lib/less-2.3.1.js"  />
+    <c:choose>
+	    <c:when test="${devMode}">
+            <!-- intentionally using the spring message framework for these messages -->
+            <spring:message var="production_flag" text="development"/>
+        </c:when>
+        <!-- NOTE:  The minified videoJS file is not the same as from the origial developers.  Changes were made to the js file to force Flash for IE browsers.
+                    Re-minify if you make other changes to the video.js file. -->
+        <c:otherwise>
+            <!-- intentionally using the spring message framework for these messages -->
+            <spring:message var="production_flag" code="jmvc_production_flag"  text="development"/>
+        </c:otherwise>
+    </c:choose>
+
+	<spring:message code="common.base.js" var="vaultCommonBaseChecksum" text=""/>
+	<veevaUi:urlCDN var="vaultCommonBaseUrl"  value="/resources/scripts/minified/common.base${vaultCommonBaseChecksum}.js" disableCDN="${disableCDN}" />
+
+	<spring:message code="vault.main.js" var="vaultMainChecksum" text=""/>
+    <veevaUi:urlCDN var="vaultMainUrl"  value="/resources/scripts/minified/vault.main${vaultMainChecksum}.js" disableCDN="${disableCDN}" />
+
+	<spring:message code="vault.dashboards.js" var="dashboardsPageChecksum" text=""/>
+	<veevaUi:urlCDN var="dashboardsPage" value="/resources/scripts/minified/pages/vault.dashboards${dashboardsPageChecksum}"  disableCDN="${disableCDN}" />
+
+	<spring:message code="vault.library.js" var="libraryPageChecksum" text=""/>
+    <spring:message code="vault.vaultloader.js" var="vaultLoaderPageChecksum" text=""/>
+    <veevaUi:urlCDN var="vaultLoaderPage" value="/resources/scripts/minified/pages/vault.vaultloader${vaultLoaderPageChecksum}"  disableCDN="${disableCDN}" />
+
+    <spring:message code="vault.rimSaViewer.js" var="rimSaViewerPageChecksum" text=""/>
+    <veevaUi:urlCDN var="rimSaViewerPage" value="/resources/scripts/minified/pages/vault.rimSaViewer${rimSaViewerPageChecksum}" disableCDN="${disableCDN}" />
+
+
+	<veevaUi:urlCDN var="libraryPage" value="/resources/scripts/minified/pages/vault.library${libraryPageChecksum}"  disableCDN="${disableCDN}" />
+
+	<spring:message code="components.docviewer.js" var="docViewerCompChecksum" text=""/>
+	<veevaUi:urlCDN var="docviewerComponent" value="/resources/scripts/minified/components/components.docviewer${docViewerCompChecksum}"  disableCDN="${disableCDN}" />
+
+	<spring:message code="vault.content.js" var="contentPageChecksum" text=""/>
+	<veevaUi:urlCDN var="contentPage" value="/resources/scripts/minified/pages/vault.content${contentPageChecksum}"  disableCDN="${disableCDN}" />
+
+	<!--Admin Pages-->
+
+    <spring:message code="admin.main.js" var="adminMainChecksum" text=""/>
+    <veevaUi:urlCDN var="adminMainUrl" value="/resources/scripts/minified/pages/admin.main${adminMainChecksum}"  disableCDN="${disableCDN}" />
+
+    <spring:message code="admin.configuration.js" var="adminConfigurationChecksum" text=""/>
+    <veevaUi:urlCDN var="adminConfigurationUrl" value="/resources/scripts/minified/pages/admin.configuration${adminConfigurationChecksum}"  disableCDN="${disableCDN}" />
+
+	<spring:message code="admin.operations.js" var="adminOperationsChecksum" text=""/>
+	<veevaUi:urlCDN var="adminOperationsUrl" value="/resources/scripts/minified/pages/admin.operations${adminOperationsChecksum}"  disableCDN="${disableCDN}" />
+
+	<spring:message code="admin.usersgroups.js" var="adminUsersGroupsChecksum" text=""/>
+	<veevaUi:urlCDN var="adminUsersGroupsUrl" value="/resources/scripts/minified/pages/admin.usersgroups${adminUsersGroupsChecksum}"  disableCDN="${disableCDN}" />
+
+	<spring:message code="admin.settings.js" var="adminSettingsChecksum" text=""/>
+	<veevaUi:urlCDN var="adminSettingsUrl" value="/resources/scripts/minified/pages/admin.settings${adminSettingsChecksum}"  disableCDN="${disableCDN}" />
+
+	<spring:message code="admin.toolbox.js" var="adminToolboxChecksum" text=""/>
+	<veevaUi:urlCDN var="adminToolboxUrl" value="/resources/scripts/minified/pages/admin.toolbox${adminToolboxChecksum}"  disableCDN="${disableCDN}" />
+
+
+	<!--Enterprise and External Pages-->
+
+    <spring:message code="enterprise.main.js" var="enterpriseMainChecksum" text=""/>
+    <veevaUi:urlCDN var="enterpriseMainUrl"  value="/resources/scripts/minified/enterprise.main${enterpriseMainChecksum}.js" disableCDN="${disableCDN}" />
+
+    <spring:message code="docviewer.main.js" var="annotatejsChecksum" text=""/>
+	<veevaUi:urlCDN var="annotateJsUrl" value="/resources/scripts/minified/docviewer.main${annotatejsChecksum}.js"  disableCDN="${disableCDN}" />
+
+	<veevaUi:url var="i18nUrl" value="/i18n/all/${sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.userLanguage}/${dateLocale}?_=${fn:trim(production_flag)}" appendNonce="false"/>
+
+    <spring:message code="es5-shim-4.0.6.js" var="es5ShimChecksum" text="" />
+    <veevaUi:urlCDN var="html5shim"  value="/resources/scripts/lib/es5-shim-4.0.6${es5ShimChecksum}.js" disableCDN="${disableCDN}"/>
+
+    <spring:message code="video.min.js" var="videoJSChecksum" text=""/>
+    <veevaUi:urlCDN var="videoJS" value="/resources/scripts/lib/video.min${videoJSChecksum}.js" disableCDN="${disableCDN}" />
+
+    <spring:message code="flowplayer-3.2.12.min.js" var="flowPlayerChecksum" text=""/>
+    <veevaUi:urlCDN var="flowplayerJS" value="/resources/scripts/lib/flowplayer/flowplayer-3.2.12.min${flowPlayerChecksum}.js" disableCDN="${disableCDN}" />
+
+    <spring:message code="respond.min.js" var="respondChecksum" text=""/>
+    <veevaUi:urlCDN var="respondJSMin" value="/resources/scripts/lib/respond.min${respondChecksum}.js"  disableCDN="${disableCDN}" />
+
+
+    <!-- Need to load the Video JS plugin at the beginning of the header since it has issues in IE when loaded later in the page where Steal does it.
+        	 It's is very important that this is the first thing we do in the header otherwise it breaks the entire app
+        -->
+
+    <jsp:text><![CDATA[<!--[if lt IE 9]>]]></jsp:text>
+        <script type="text/javascript"  src="${html5shim}" ><!-- empty --> </script>
+    <script type="text/javascript" src="${respondJSMin}"><!-- empty --></script>
+    <jsp:text><![CDATA[<![endif]-->]]></jsp:text>
+
+    <c:if test="${production_flag == 'development'}" >
+
+        <c:choose>
+            <c:when test="${veevaUi:isLegacyIE(pageContext)}">
+                <script><![CDATA[
+                if(window.console && window.console.log){
+                    console.log("Development mode only supports the minified css with IE8/IE9, please use a different browser or load the minfied css in your vm.");
+                }
+
+                ]]></script>
+            </c:when>
+            <c:otherwise>
+                <script><![CDATA[
+                var less={
+                    env: "development",
+                    relativeUrls: true,
+                    strictMath: true,
+                    dumpLineNumbers: "all"
+                };
+
+                ]]></script>
+                <script src="${lessJS}" type="text/javascript"><!-- empty --></script>
+
+            </c:otherwise>
+        </c:choose>
+
+    </c:if>
+
+    <script type="text/javascript">
+        <![CDATA[
+
+        window.addLoadListener = function(func){
+            if(window.addEventListener) {
+                window.addEventListener("load", func);
+            } else if (document.attachEvent) {
+                window.attachEvent("onload", func)
+            }
+        };
+
+        //leveraged from fallback.js
+        window.cssCheck = {
+           check:function(selector) {
+                if (!document.styleSheets) {
+                    return false;
+                }
+                var index, stylesheet, found;
+
+                for (index in document.styleSheets) {
+                    stylesheet = document.styleSheets[index];
+
+                    if (stylesheet === 0) {
+                        continue;
+                    }
+
+                    // Issues with CORS at times, don't let the script bomb.
+                    try {
+                        if (stylesheet.rules) {
+                            found = css.scan(stylesheet.rules, selector);
+
+                            if (found) {
+                                return found;
+                            }
+                        }
+
+                        if (stylesheet.cssRules) {
+                            found = css.scan(stylesheet.cssRules, selector);
+
+                            if (found) {
+                                return found;
+                            }
+                        }
+                    } catch (e) {
+                        continue;
+                    }
+                }
+                return false;
+            },
+            scan: function(ruleset, selector) {
+                var index, rule;
+
+                for (index in ruleset) {
+                    rule = ruleset[index];
+
+                    if (rule.selectorText === selector){
+                        return true;
+                    }
+                }
+                return false;
+            }
+        };
+
+        ]]>
+    </script>
+
+
+
+    <c:if test="${enableVideoPlayer}">
+        <c:choose>
+            <c:when test="${enableFlowPlayer}">
+                <script src="${flowplayerJS}" type="text/javascript"><!-- empty --></script>
+            </c:when>
+            <c:otherwise>
+                <c:choose>
+                    <c:when test="${devMode}">
+                        <script src="/resources/scripts/lib/video.js" type="text/javascript"><!-- empty --></script>
+                    </c:when>
+                    <c:otherwise>
+                        <script src="${videoJS}" type="text/javascript"><!-- empty --></script>
+                    </c:otherwise>
+                </c:choose>
+            </c:otherwise>
+        </c:choose>
+    </c:if>
+
+    <!--load localization file-->
+    <c:if test="${ (packaging != 'external') and (packaging != 'annotate') and (packaging != null)}">
+        <script src="${i18nUrl}" type="text/javascript"><!-- dummy --></script>
+    </c:if>
+
+    <!--load javascript package-->
+    <c:choose>
+        <c:when test="${packaging == 'vault'}">
+            <c:choose>
+            <c:when test="${production_flag != 'development'}">
+                    <script type="text/javascript"><![CDATA[
+	                   var require ={
+	                       paths:{
+	                           "admin.main" : "${adminMainUrl}",
+	                           "admin.configuration"  : "${adminConfigurationUrl}",
+		                       "admin.operations"  : "${adminOperationsUrl}",
+		                       "admin.usersgroups"  : "${adminUsersGroupsUrl}",
+		                       "admin.toolbox"  : "${adminToolboxUrl}",
+		                       "admin.settings"  : "${adminSettingsUrl}",
+		                       "vault.dashboards" : "${dashboardsPage}",
+                               "vault.vaultloader" : "${vaultLoaderPage}",
+                               "vault.rimSaViewer" : "${rimSaViewerPage}",
+		                       "vault.library" : "${libraryPage}",
+		                       "vault.content" : "${contentPage}",
+		                       "components.docviewer" : "${docviewerComponent}"
+	                       }
+	                   };
+                    ]]></script>
+	            <script src="${vaultCommonBaseUrl}" type="text/javascript"><!-- required for FF3 and Opera --></script>
+	            <script src="${vaultMainUrl}" type="text/javascript"><!-- required for FF3 and Opera --></script>
+            </c:when>
+            <c:otherwise>
+                <script src="/resources/scripts/packages/vault-all.js"><!-- empty --></script>
+	            <script data-main="/resources/scripts/packages/vault.main.js" src="/resources/components/lib/requirejs/require.js"><!-- empty --></script>
+            </c:otherwise>
+            </c:choose>
+        </c:when>
+        <c:when test="${packaging == 'enterprise'}">
+            <c:choose>
+                <c:when test="${production_flag != 'development'}">
+	                <script src="${vaultCommonBaseUrl}" type="text/javascript"><!-- required for FF3 and Opera --></script>
+	                <script src="${enterpriseMainUrl}" type="text/javascript"><!-- required for FF3 and Opera --></script>
+                </c:when>
+                <c:otherwise>
+                    <script src="/resources/scripts/packages/vault-all.js" type="text/javascript"><!-- empty --></script>
+                    <script data-main="/resources/scripts/packages/enterprise.main.js" src="/resources/components/lib/requirejs/require.js"><!-- empty --></script>
+
+                </c:otherwise>
+            </c:choose>
+        </c:when>
+        <c:when test="${packaging == 'annotate'}">
+            <c:choose>
+                <c:when test="${production_flag != 'development'}">
+	                <script src="${vaultCommonBaseUrl}" type="text/javascript"><!-- empty --></script>
+                    <script src="${annotateJsUrl}" type="text/javascript"><!--empty --></script>
+                </c:when>
+                <c:otherwise>
+                    <script src="/resources/jspm_packages/system.js" type="text/javascript"><!--empty --></script>
+                    <script src="/resources/config.js" type="text/javascript"><!--empty --></script>
+                    <script><![CDATA[
+                    System.import("scripts/packages/docviewer.main.js");
+                    ]]></script>
+                </c:otherwise>
+            </c:choose>
+        </c:when>
+    </c:choose>
+
+    <c:if test="${ (production_flag != 'development') and (packaging != 'external') and (packaging != null)}">
+        <script type="text/javascript">
+            <![CDATA[
+            window.addLoadListener(function() {
+                //check if javascript is loading from the CDN
+                if (!window.jQuery && document.cookie.indexOf("disableCDN=true")) {
+                    document.cookie = "disableCDN=true";
+                    window.location.reload();
+                }
+            });
+            ]]>
+        </script>
+    </c:if>
+
+
+</jsp:root>

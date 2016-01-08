@@ -1,18 +1,14 @@
 module.exports = {
-		"baseUrl": "/resources/",
+		"baseUrl": "/Users/larryhe/workspace/vault.git/WzlUI/src/main/webapp/",
 		"paths": {
-
-			"jquerydomfixture": "JMVC/jquery/dom/fixture/fixture", // WARNING: never include this in a production package as it will mock test data for the model endpoints
-
 			/***** START: common base packages; these modules will be packaged in vault.common.base.js and will be excluded from all other production packages *****/
 			/***** IMPORTANT: we want to sync and control the size of the common.base production package so do not add anything additional packages here without consulting with Tudo Nguyen/Chris Rink *****/
+			//third party library developer should not touch them
 			"cssua": "components/lib/cssuseragent/cssua",
-			"jqueryui": "JMVC/veeva_vault/resources/scripts/jquery-ui",
-			"jquerymigrate": "JMVC/jquery/jquery-migrate-1.2.1",
-			"json": "JMVC/veeva_vault/resources/scripts/json2",
-			"signals": "JMVC/veeva_vault/resources/scripts/signals",
-
-			//Bower Components
+			"jqueryui": "components/lib/jquery/dist/jquery-ui",
+			"jquerymigrate": "components/lib/jquery/dist/jquery-migrate-1.2.1",
+			"json": "components/lib/json/json2",
+			"signals": "components/lib/signals/signals",
 			"backbone": "components/lib/backbone/backbone",
 			"underscore": "components/lib/underscore/underscore",
 			"backbone.paginator": "components/lib/backbone.paginator/lib/backbone.paginator",
@@ -21,25 +17,10 @@ module.exports = {
 			"bootstrap.transition": "components/lib/bootstrap/js/transition",
 			"bootstrap.collapse": "components/lib/bootstrap/js/collapse",
 			"bootstrap.dropdown": "components/lib/bootstrap/js/dropdown",
+            "snap.svg": "components/lib/Snap.svg/dist/snap.svg",
 			"bootstrap.affix": "JMVC/veeva_vault/resources/scripts/bootstrap-affix",
 			"bootstrap.scrollspy": "JMVC/veeva_vault/resources/scripts/bootstrap-scrollspy",
 
-			// JMVC Libraries
-			"steal": "JMVC/veeva_vault/resources/scripts/veeva/stealShim",
-			"jqueryobject": "JMVC/jquery/lang/object/object",
-			"jquerystring": "JMVC/jquery/lang/string/string",
-			"jqueryclass": "JMVC/jquery/class/class",
-			"jqueryeventdestroyed": "JMVC/jquery/event/destroyed/destroyed",
-			"jquerycontroller": "JMVC/jquery/controller/controller",
-			"jquerymodel": "JMVC/jquery/model/model",
-
-			// date/datetime libraries
-			"moment": "JMVC/veeva_vault/resources/scripts/moment",
-			"momentTZ": "JMVC/veeva_vault/resources/scripts/moment-timezone-with-data",
-			"momentJDF": "JMVC/veeva_vault/resources/scripts/moment-jdateformatparser",
-			"vaultDateFormatter": "JMVC/vault/dateFormatter",
-
-			// Third Party Widgets
 			"bbq": "JMVC/veeva_vault/resources/scripts/jquery.ba-bbq",
 			"blockui": "JMVC/veeva_vault/resources/scripts/jquery.blockUI",
 			"fgmenu": "JMVC/veeva_vault/resources/scripts/fg.menu",
@@ -60,10 +41,67 @@ module.exports = {
 			"bubblepopup": "JMVC/veeva_vault/resources/scripts/veeva.bubblePopup",
 			"nibbler": "JMVC/veeva_vault/resources/scripts/Nibbler",
             "base64": "JMVC/veeva_vault/resources/scripts/base64",
-
 			"highcharts": "JMVC/veeva_vault/resources/scripts/highcharts/highcharts",
 			"highchartstheme":'JMVC/veeva_vault/resources/scripts/highcharts/themes/veeva-theme',       // Veeva Theme
+            "es5shim":"JMVC/veeva_vault/resources/scripts/es5-shim-4.0.6",
+            "jsplumb": "JMVC/veeva_vault/resources/scripts/jquery.jsPlumb-1.6.2",
+            "highchartsmore":'JMVC/veeva_vault/resources/scripts/highcharts/highcharts-more',    // charting library add-on
+            "highchartsexporting":'JMVC/veeva_vault/resources/scripts/highcharts/exporting',  		// export charts
+            "jquerytextinputs": "JMVC/veeva_vault/resources/scripts/jquery.textinputs",
+            "slickeditor": "JMVC/vault_binders/resources/scripts/veeva.slick.editors",
+            "slickdataview": "JMVC/veeva_vault/resources/scripts/slick.dataview",
+            "slickcore": "JMVC/veeva_vault/resources/scripts/slick.core",
+            "slickgrid": "JMVC/veeva_vault/resources/scripts/slick.grid",
 
+            "jquerytree" : "JMVC/veeva_vault/resources/scripts/jquery.jstree",
+            "veevajstree": "JMVC/veeva_vault/resources/scripts/veeva.jstree",
+            "moreless": "JMVC/veeva_vault/resources/scripts/veeva.moreLess",
+            "vvparentsortpage": "JMVC/veeva_vault/resources/scripts/veeva.veevaParentSortPage",
+            "jquerydatatable" : "JMVC/veeva_vault/resources/scripts/jquery.dataTables",
+            "hotkeys" : 'JMVC/veeva_vault/resources/scripts/jquery.hotkeys',
+            "jqueryform":"JMVC/veeva_vault/resources/scripts/jquery.form",
+            "lazyscrollloader": "JMVC/veeva_vault/resources/scripts/jquery.lazyscrollloading",
+            "moment": "JMVC/veeva_vault/resources/scripts/moment",
+            "momentTZ": "JMVC/veeva_vault/resources/scripts/moment-timezone-with-data",
+
+            "combobox": "JMVC/veeva_vault/resources/scripts/veeva.combobox",
+            "truncatetext": "JMVC/veeva_vault/resources/scripts/veeva.truncateText",
+            "rolodex": "JMVC/veeva_vault/resources/scripts/veeva.rolodex",
+            "veevachunk": "JMVC/veeva_vault/resources/scripts/veeva.chunk",
+            "veevasearchbar": "JMVC/veeva_vault/resources/scripts/veeva.searchbar",
+            "itemview": "JMVC/veeva_vault/resources/scripts/veeva.ui.itemview",
+            "wizarddialog": "JMVC/veeva_vault/resources/scripts/veeva/wizardDialog",
+            "wizardpage": "JMVC/veeva_vault/resources/scripts/veeva/wizardPage",
+            "vvpagingwidget" : "JMVC/veeva_vault/resources/scripts/veeva.page",
+            "docviewexpanderwidget" : "JMVC/veeva_vault/resources/scripts/veeva/docViewExpander",
+            "singlefileupload": "JMVC/veeva_vault/resources/scripts/veeva.singleFileUpload",
+            "searchfilter": "JMVC/veeva_vault/resources/scripts/veeva.ui.searchfilter",
+            "veevaselect": "JMVC/veeva_vault/resources/scripts/veeva.select",
+            "veevaaccordian": "JMVC/veeva_vault/resources/scripts/veeva.accordian",
+            "veevauiautocomplete": "JMVC/veeva_vault/resources/scripts/veeva.ui.autocomplete",
+            "vvmultifileselect": "JMVC/veeva_vault/resources/scripts/veeva.multifileselect",
+            "veevamenu": "JMVC/veeva_vault/resources/scripts/veeva/menu",
+            "colreorderresize": "JMVC/veeva_vault/resources/scripts/veeva.ColReorderWithResize",
+            "veevainlineedit": "JMVC/veeva_vault/resources/scripts/veeva.inlineEdit",
+            "gridtable": "JMVC/vault_binders/resources/scripts/veeva.gridtable",
+            "veevatokenator": "JMVC/vault_admin/resources/scripts/veeva.ui.tokenator",
+            // JMVC Libraries
+            "steal": "JMVC/veeva_vault/resources/scripts/veeva/stealShim",
+            "jqueryobject": "JMVC/jquery/lang/object/object",
+            "jquerystring": "JMVC/jquery/lang/string/string",
+            "jqueryclass": "JMVC/jquery/class/class",
+            "jqueryeventdestroyed": "JMVC/jquery/event/destroyed/destroyed",
+            "jquerycontroller": "JMVC/jquery/controller/controller",
+            "jquerymodel": "JMVC/jquery/model/model",
+
+            // all the files below is our own and will be migrated to ES6 module format
+            "jquerydomfixture": "JMVC/jquery/dom/fixture/fixture", // WARNING: never include this in a production package as it will mock test data for the model endpoints
+            "jqueryuidatepicker": "JMVC/veeva_vault/resources/scripts/jquery.ui.datepicker",
+            "jqueryuidatetimepicker": "JMVC/veeva_vault/resources/scripts/jquery-ui-timepicker-addon",
+            "veevafilterbuilder": "JMVC/veeva_vault/resources/scripts/veeva.ui.filterbuilder",
+            "colorpicker": "JMVC/veeva_vault/resources/scripts/colorpicker",
+            "momentJDF": "JMVC/veeva_vault/resources/scripts/moment-jdateformatparser",
+            "vaultDateFormatter": "JMVC/vault/dateFormatter",
 
 			// Veeva widgets
 			"veevatooltip": "JMVC/veeva_vault/resources/scripts/veeva.tooltip",
@@ -75,6 +113,7 @@ module.exports = {
 			"documentLeafHover":"JMVC/vault/documentLeaf",
 			"favoritesController": "JMVC/vault/favoritesController",
             "persistentNotice": "JMVC/vault/persistentNotice",
+            "notificationFlyout": "JMVC/vault/notificationFlyout",
 
 			"vvcontrollerbase": "JMVC/veeva_vault/controllers/base_controller",
 			"vvcontrollerbasenav": "JMVC/veeva_vault/controllers/base_nav_controller",
@@ -82,6 +121,7 @@ module.exports = {
 			"vvcontrollerutil": "JMVC/veeva_vault/controllers/util_controller",
 			"vvcontrollerpersistentstatus": "JMVC/veeva_vault/controllers/persistent_status_controller",
 			"veevajumplink": "JMVC/veeva_vault/resources/scripts/veeva.jumplink",
+
 			/***** END: common base packages *****/
 
 			/***** START: common admin packages *****/
@@ -90,72 +130,32 @@ module.exports = {
 
 
 
-			//** Third Party Libraries **/
-			"es5shim":"JMVC/veeva_vault/resources/scripts/es5-shim-4.0.6",
-			"jsplumb": "JMVC/veeva_vault/resources/scripts/jquery.jsPlumb-1.6.2",
-
-
-			"highchartsmore":'JMVC/veeva_vault/resources/scripts/highcharts/highcharts-more',    // charting library add-on
-			"highchartsexporting":'JMVC/veeva_vault/resources/scripts/highcharts/exporting',  		// export charts
-
-			//** Third Party Widget Libraries **/
-			"jqueryuidatepicker": "JMVC/veeva_vault/resources/scripts/jquery.ui.datepicker",
-			"jqueryuidatetimepicker": "JMVC/veeva_vault/resources/scripts/jquery-ui-timepicker-addon",
-			"jquerytextinputs": "JMVC/veeva_vault/resources/scripts/jquery.textinputs",
-			"slickeditor": "JMVC/vault_binders/resources/scripts/veeva.slick.editors",
-			"slickdataview": "JMVC/veeva_vault/resources/scripts/slick.dataview",
-			"slickcore": "JMVC/veeva_vault/resources/scripts/slick.core",
-			"slickgrid": "JMVC/veeva_vault/resources/scripts/slick.grid",
-			"veevafilterbuilder": "JMVC/veeva_vault/resources/scripts/veeva.ui.filterbuilder",
-			"jquerytree" : "JMVC/veeva_vault/resources/scripts/jquery.jstree",
-			"veevajstree": "JMVC/veeva_vault/resources/scripts/veeva.jstree",
-			"moreless": "JMVC/veeva_vault/resources/scripts/veeva.moreLess",
-			"vvparentsortpage": "JMVC/veeva_vault/resources/scripts/veeva.veevaParentSortPage",
-			"jquerydatatable" : "JMVC/veeva_vault/resources/scripts/jquery.dataTables",
-			"hotkeys" : 'JMVC/veeva_vault/resources/scripts/jquery.hotkeys',
-			"jqueryform":"JMVC/veeva_vault/resources/scripts/jquery.form",
-			"colorpicker": "JMVC/veeva_vault/resources/scripts/colorpicker",
-            "lazyscrollloader": "JMVC/veeva_vault/resources/scripts/jquery.lazyscrollloading",
-
 			/** Vault Created Widgets **/
-			"combobox": "JMVC/veeva_vault/resources/scripts/veeva.combobox",
+
+
+
 			"multiacsearch": "JMVC/veeva_vault/resources/scripts/veeva.ui.multiacsearch",
 			"docTypeSuggestionSearch": "JMVC/veeva_vault/resources/scripts/veeva/docTypeSuggestionSearch",
-			"truncatetext": "JMVC/veeva_vault/resources/scripts/veeva.truncateText",
-			"rolodex": "JMVC/veeva_vault/resources/scripts/veeva.rolodex",
-			"veevachunk": "JMVC/veeva_vault/resources/scripts/veeva.chunk",
 			"searchbreadcrumbs": "JMVC/veeva_vault/resources/scripts/veeva.ui.searchbreadcrumbs",
-			"veevasearchbar": "JMVC/veeva_vault/resources/scripts/veeva.searchbar",
-			"itemview": "JMVC/veeva_vault/resources/scripts/veeva.ui.itemview",
 			"nestedpicklist": "JMVC/veeva_vault/resources/scripts/veeva.ui.nestedPicklist",
 			"categorizedpicklist": "JMVC/veeva_vault/resources/scripts/veeva.ui.categorizedPicklist",
-			"wizarddialog": "JMVC/veeva_vault/resources/scripts/veeva/wizardDialog",
             "userassignedsitesdialog": "JMVC/veeva_vault/resources/scripts/veeva/userAssignedSitesDialog",
             "addremovejoinsdialog": "JMVC/veeva_vault/resources/scripts/veeva/addRemoveJoinRecordsDialog",
-			"wizardpage": "JMVC/veeva_vault/resources/scripts/veeva/wizardPage",
 			"listtooltip": "JMVC/veeva_vault/resources/scripts/veeva/listTooltip",
 			"resizabletoolbar" : "JMVC/veeva_vault/resources/scripts/veeva/resizable-toolbar",
-			"vvpagingwidget" : "JMVC/veeva_vault/resources/scripts/veeva.page",
+
 			"daterangewidget" : "JMVC/veeva_vault/resources/scripts/veeva.ui.daterange",
-			"docviewexpanderwidget" : "JMVC/veeva_vault/resources/scripts/veeva/docViewExpander",
-			"singlefileupload": "JMVC/veeva_vault/resources/scripts/veeva.singleFileUpload",
 			"parentlookup": "JMVC/veeva_vault/resources/scripts/veeva.ui.parentlookup",
 			"mostRecentlyUsedAutoComplete": "JMVC/veeva_vault/resources/scripts/veeva.ui.mostRecentlyUsedAutoComplete",
 			"proplookup": "JMVC/veeva_vault/resources/scripts/veeva.ui.proplookup",
 			"voflookup": "JMVC/veeva_vault/resources/scripts/veeva.ui.voflookup",
-			"searchfilter": "JMVC/veeva_vault/resources/scripts/veeva.ui.searchfilter",
-			"singleitemuser": "JMVC/veeva_vault/resources/scripts/veeva.ui.singleitemuser",
-			"veevaselect": "JMVC/veeva_vault/resources/scripts/veeva.select",
+            "singleitemuser": "JMVC/veeva_vault/resources/scripts/veeva.ui.singleitemuser",
 			"veevacomment": "JMVC/veeva_vault/resources/scripts/veeva.comment",
-			"veevaaccordian": "JMVC/veeva_vault/resources/scripts/veeva.accordian",
-			"veevauiautocomplete": "JMVC/veeva_vault/resources/scripts/veeva.ui.autocomplete",
 			"veevauifacetbase": "JMVC/veeva_vault/resources/scripts/veeva.ui.facetBase",
 			"veevauifacet": "JMVC/veeva_vault/resources/scripts/veeva.ui.facet",
 			"facetcriteria":  "JMVC/veeva_vault/utilities/facetCriteriaTransformer",
 			"formulaeditor": "JMVC/vault_admin/resources/scripts/veeva.ui.formulaeditor",
 			"formulabuilder": "JMVC/vault_admin/resources/scripts/veeva.ui.formulaBuilder",
-			"vvmultifileselect": "JMVC/veeva_vault/resources/scripts/veeva.multifileselect",
-			"veevamenu": "JMVC/veeva_vault/resources/scripts/veeva/menu",
 			'nestedmenu': 'JMVC/veeva_vault/resources/scripts/veeva/nestedMenu',
 			"spatialAwareness": "JMVC/veeva_vault/resources/scripts/veeva/spatialAwareness",
 			'voftabbar': 'JMVC/veeva_vault/resources/scripts/veeva/vofTabBar',
@@ -165,18 +165,26 @@ module.exports = {
 			"vvbasedialog": "JMVC/veeva_vault/resources/scripts/veeva/baseDialog",
 			"reordercol": "JMVC/veeva_vault/resources/scripts/veeva/reorderCol",
 			"vvmergeanchordialog": "JMVC/veeva_vault/resources/scripts/veeva/mergeAnchorDialog",
-			"colreorderresize": "JMVC/veeva_vault/resources/scripts/veeva.ColReorderWithResize",
 			"vvscrolltoedge": "JMVC/veeva_vault/resources/scripts/veeva.scrollToEdge",
-			"veevainlineedit": "JMVC/veeva_vault/resources/scripts/veeva.inlineEdit",
 			"vaultwindowmanager": "annotate/veeva/Vault/Services/WindowManager",
 			"veevadocumentlookup": "JMVC/veeva_vault/resources/scripts/veeva.documentLookup",
 
 			"veevauiadvancedfilter":"JMVC/veeva_vault/resources/scripts/veeva.ui.advancedFilter",
 			"vvdropdowngroupformater": "JMVC/veeva_vault/resources/scripts/veeva/dropdownGroupFormater",
 			"docTypePicker":"JMVC/veeva_vault/resources/scripts/veeva.ui.docTypePicker",
+			"fieldSelector": "components/common/widgets/fieldSelector/scripts/veeva.fieldSelector",
+            "selectExistingPicklist":"JMVC/veeva_vault/resources/scripts/veeva.ui.selectExistingPicklist",
             
             // Rules Widget
 			"ruleswidget" : "JMVC/veeva_vault/resources/scripts/RulesWidget",
+            
+            
+            "sectionsManager" : "components/common/widgets/sectionsManager/scripts/veeva.ui.sectionsManager",
+            "subWidgetSwitcher" : "components/common/widgets/subWidgetSwitcher/scripts/veeva.ui.subWidgetSwitcher",
+            "workflowStartStepPromptInstruction" : "JMVC/veeva_vault/resources/scripts/veeva/workflow/workflowStartStepPromptInstruction",
+            "workflowStartStepPromptDate" : "JMVC/veeva_vault/resources/scripts/veeva/workflow/workflowStartStepPromptDate",
+            "workflowStartStepPromptParticipants" : "JMVC/veeva_vault/resources/scripts/veeva/workflow/workflowStartStepPromptParticipants",
+            
 			"entryCriteriaRuleActionWidget": "JMVC/veeva_vault/resources/scripts/veeva/rulesWidget/EntryCriteriaRuleActionWidget",
 			"esignaturePagesRuleActionWidget": "JMVC/veeva_vault/resources/scripts/veeva/rulesWidget/EsignaturePagesRuleActionWidget",
 			"userActionRuleActionWidget": "JMVC/veeva_vault/resources/scripts/veeva/rulesWidget/UserActionsRuleActionWidget",
@@ -188,9 +196,14 @@ module.exports = {
             "ruleswidgetserializers": "JMVC/veeva_vault/resources/scripts/veeva/rulesWidget/serialize/rulesWidgetSerializers",
             "objectlifecyclebehaviorserializer": "JMVC/veeva_vault/resources/scripts/veeva/rulesWidget/serialize/ObjectLifecycleBehaviorSerializer",
 
+			// Object Workflow-related widgets
+			"picklistBuilder": "components/common/widgets/picklistBuilder/scripts/picklistBuilder",
+			"verdictBuilder": "components/common/widgets/verdictBuilder/scripts/verdictBuilder",
+			"verdictSectionBuilder": "components/common/widgets/verdictSectionBuilder/scripts/verdictSectionBuilder",
+
 			// vault_binders resources
 			"gridtree": "JMVC/vault_binders/resources/scripts/veeva.gridtree",
-			"gridtable": "JMVC/vault_binders/resources/scripts/veeva.gridtable",
+
 
 			// veeva_vault controllers
 			"vvcontrollerhome": "JMVC/veeva_vault/controllers/home_controller",
@@ -212,8 +225,6 @@ module.exports = {
 			"vvcontrollerdocumentsharingdefaulting": "JMVC/veeva_vault/controllers/document/document_sharing_defaulting_controller",
 			"vvcontrollerdocumentsharingdefaultingmultiple": "JMVC/veeva_vault/controllers/document/document_sharing_defaulting_multiple_controller",
 			"vvcontrolleradddocumentsharing": "JMVC/veeva_vault/controllers/document/add_document_sharing_controller",
-            "vvcontrollerdocumentsharingsettings": "JMVC/veeva_vault/controllers/document/document_sharing_settings_controller",
-            "vvcontrollerdocumentsharingaddmembers": "JMVC/veeva_vault/controllers/document/document_sharing_add_members_controller",
 			"vvcontrollerdocinfo": "JMVC/veeva_vault/controllers/doc_info_controller",
 			"vvcontrollerdocinfo3": "JMVC/veeva_vault/controllers/doc_info3_controller",
 			"vvcontrollerdocinfoclassify": "JMVC/veeva_vault/controllers/doc_info_classify_controller",
@@ -280,6 +291,7 @@ module.exports = {
 			"vvcontrollereditfields": "JMVC/veeva_vault/controllers/bulkAction/edit_fields_controller",
 			"vvcontrollerbulkeditfields": "JMVC/veeva_vault/controllers/bulkAction/bulk_edit_fields_controller",
             "vvcontrollerbulkdeletedocuments": "JMVC/veeva_vault/controllers/bulkAction/bulk_delete_documents_controller",
+			"vvcontrollerbulkchangeownercoordinator": "JMVC/veeva_vault/controllers/bulkAction/bulk_change_owner_coordinator",
 			"vvcontrollergeneratecompliancepackage": "JMVC/veeva_vault/controllers/bulkAction/generate_compliance_package_controller",
 			"vvcontrollerupdateroles": "JMVC/veeva_vault/controllers/bulkAction/update_roles_controller",
 			"vvcontrolleraddroles": "JMVC/veeva_vault/controllers/bulkAction/add_roles_controller",
@@ -319,7 +331,15 @@ module.exports = {
 			"vofwidgetsattachment": "JMVC/vofWidgets/attachment",
 			"vofwidgetsrelation": "JMVC/vofWidgets/relation",
 			"vofwidgetsrelateddocs": "JMVC/vofWidgets/relatedDocs",
+            "vofwidgetsbinders": "JMVC/vofWidgets/binders",
 			"vofruleswidget": "JMVC/vofWidgets/vofRulesWidget",
+			"vofwftimelinewidget": "JMVC/vofWidgets/wfTimeline",
+			"stepType": "JMVC/veeva_vault/resources/scripts/veeva/workflow/stepType/scripts/stepType",
+			"vofTasks": "JMVC/vofWidgets/tasks",
+			"objectWorkflowUserTaskNotificationAndReminders": "JMVC/veeva_vault/resources/scripts/veeva/workflow/userTaskNotificationAndReminders/scripts/objectWorkflowUserTaskNotificationAndReminders",
+			"userTaskNotificationAndRemindersRow": "JMVC/veeva_vault/resources/scripts/veeva/workflow/userTaskNotificationAndRemindersRow/scripts/userTaskNotificationAndRemindersRow",
+			"widgetList": "JMVC/veeva_vault/resources/scripts/veeva/workflow/widgetList/scripts/widgetList",
+			"userTaskVerdict": "JMVC/veeva_vault/resources/scripts/veeva/workflow/userTaskVerdict/scripts/userTaskVerdict",
 
 			/*
 			 * Vof related controller (separate b/c now they're available in both
@@ -330,7 +350,7 @@ module.exports = {
 			"vvcontrollerrecordsharingsettings":"JMVC/vault_admin/controllers/objects/record_sharing_settings_controller",
 
 			// vault_admin resources
-			"veevatokenator": "JMVC/vault_admin/resources/scripts/veeva.ui.tokenator",
+
          "customTabsTree": "JMVC/vault_admin/resources/scripts/veeva.customTabsTree",
 
 			// vault_admin controllers
@@ -356,6 +376,8 @@ module.exports = {
 			"vvcontrollersubmissionimport": "JMVC/veeva_vault/controllers/submission_import_controller",
 
 			"vvcontrollersubmissionmetadatamatching": "JMVC/veeva_vault/controllers/submission_metadata_matching_controller",
+
+			"vvcontrollersadocinfosection": "JMVC/veeva_vault/controllers/sa_docinfo_section_controller",
 
 			"vvcontrollerdependentproperties": "JMVC/vault_admin/controllers/dependent_properties_controller",
 
@@ -442,6 +464,10 @@ module.exports = {
             "vvcontrollerobjectlifecyclestatedetail": "JMVC/vault_admin/controllers/objectLifecycles/object_lifecycle_state_detail_controller",
             "vvcontrollerobjectlifecyclestateUA": "JMVC/vault_admin/controllers/objectLifecycles/object_lifecycle_state_UA_controller",
             "vvcontrollerobjectlifecyclestateEA": "JMVC/vault_admin/controllers/objectLifecycles/object_lifecycle_state_EA_controller",
+            
+            "vvcontrollerobjectworkflowlist": "JMVC/vault_admin/controllers/objectWorkflows/object_workflow_list_controller",
+            "vvcontrollerobjectworkflowdetail": "JMVC/vault_admin/controllers/objectWorkflows/object_workflow_detail_controller",
+			"vvcontrollerobjectworkflowstep": "JMVC/vault_admin/controllers/objectWorkflows/object_workflow_step_controller",
 
 			"vvcontrollerlifecyclestatecolors": "JMVC/vault_admin/controllers/lifecycles/lifecycle_state_colors_controller",
 			"vvcontrollerroles": "JMVC/vault_admin/controllers/lifecycles/roles_controller",
@@ -462,6 +488,7 @@ module.exports = {
 			"vvcontrollersitesetup": "JMVC/vault_admin/controllers/objects/site_setup_controller",
 			"vvcontrollervofobjectdata": "JMVC/vault_admin/controllers/objects/vof_object_data_controller",
 			"vvcontrollervofobjectfield": "JMVC/vault_admin/controllers/objects/vof_object_field_controller",
+            "vvcontrollervofobjectconditionbuilderfield": "JMVC/vault_admin/controllers/objects/vof_object_field_condition_builder_controller",
 			"vvcontrollervofobjectlayout": "JMVC/vault_admin/controllers/objects/vof_object_layout_controller",
             "vvcontrollervofobjectpagelayout": "JMVC/vault_admin/controllers/objects/vof_object_page_layout_controller",
             "vvcontrollervofobjectpagelayoutdetail": "JMVC/vault_admin/controllers/objects/vof_object_page_layout_detail_controller",
@@ -471,6 +498,7 @@ module.exports = {
 			"vvcontrollervofobjectpagelayoutrelateddoc": "JMVC/vault_admin/controllers/objects/vof_object_page_layout_related_doc_controller",
 			"vvcontrollervofobjectsecurity": "JMVC/vault_admin/controllers/objects/vof_object_security_controller",
 			"vvcontrollervofobjectsecuritydetail": "JMVC/vault_admin/controllers/objects/vof_object_security_detail_controller",
+            "vvconditionbuildercontroller": "JMVC/vault_admin/controllers/objects/ConditionBuilderController",
             "vvcontrollervofobjectsecuritypreview": "JMVC/vault_admin/controllers/objects/vof_object_security_preview_controller",
             "vvcontrollervofaddmembersdialog": "JMVC/vault_admin/controllers/objects/vof_add_members_dialog_controller",
             "vvcontrollervofobjectsecurityutil": "JMVC/vault_admin/controllers/objects/vof_object_security_util_controller",
@@ -480,7 +508,15 @@ module.exports = {
 			"vvcontrollervofstudydetail": "JMVC/vault_admin/controllers/objects/vof_study_detail_controller",
 			"vvcontrollervofclinicalstudydetail": "JMVC/vault_admin/controllers/objects/vof_clinical_study_detail_controller",
 			"vvcontrollervofattachments": "JMVC/vault_admin/controllers/objects/vof_attachments_controller",
-			"action.vof.delete": "JMVC/veeva_vault/controllers/vof/action.vof.deleteVofObject",
+			"action.vof.delete": "JMVC/veeva_vault/controllers/vof/action.vof.deleteVofRecord",
+            "action.vof.execLcAction": "JMVC/veeva_vault/controllers/vof/action.vof.lcActionExecutor", //execStateActionOnRecord stateaction
+            "action.vof.lc.base": "JMVC/veeva_vault/controllers/vof/action.vof.lc.base",
+            "action.vof.lc.Custom": "JMVC/veeva_vault/controllers/vof/action.vof.lc.Custom",
+            "action.vof.lc.RunWorkflow": "JMVC/veeva_vault/controllers/vof/action.vof.lc.RunWorkflow",
+            "action.vof.task": "JMVC/veeva_vault/controllers/vof/action.vof.task",
+			"action.vof.report": "JMVC/veeva_vault/controllers/vof/action.vof.report",
+            "action.vof.copyrecord": "JMVC/veeva_vault/controllers/vof/action.vof.copyVofRecord",
+
 
 			"vvcontrollerrelationshipdetail": "JMVC/vault_admin/controllers/relationships/relationship_detail_controller",
 			"vvcontrollerrelationshiplist": "JMVC/vault_admin/controllers/relationships/relationship_list_controller",
@@ -489,6 +525,9 @@ module.exports = {
             "vvcontrollercustomactionlist": "JMVC/vault_admin/controllers/customAction/custom_action_list_controller",
 
             "admin.page.searchfieldlist": "JMVC/vault_admin/controllers/admin.page.SearchFieldList",
+
+            "admin.page.ssoprofilelist": "JMVC/vault_admin/controllers/settings/admin.page.SSOProfileList",
+            "action.sso.deleteSsoProfile": "JMVC/vault_admin/controllers/settings/action.sso.deleteSsoProfile",
 
          "vvcontrollercustomtabsconfig": "JMVC/vault_admin/controllers/customTabs/custom_tabs_config_controller",
          "vvcontrollertabdetail": "JMVC/vault_admin/controllers/customTabs/tab_detail_controller",
@@ -530,6 +569,7 @@ module.exports = {
 			// vault models
 			"vvmodelutil": "JMVC/veeva_vault/models/util",
             "vvmodelbase": "JMVC/veeva_vault/models/base",
+            "serverResultHandler": "JMVC/veeva_vault/utilities/server_result_handler",
             "vvautocompletesource": "JMVC/veeva_vault/utilities/auto_complete_source",
             "vvcache": "JMVC/veeva_vault/utilities/cache",
 			"vvlookupchangeconfirmation": "JMVC/veeva_vault/utilities/vof_lookup_change_confirmation",
@@ -555,12 +595,11 @@ module.exports = {
 			"vvmodeldelegateaccess": "JMVC/veeva_vault/models/delegateAccess",
 			"vvmodelcustomaction": "JMVC/veeva_vault/models/custom_action",
 			"vvmodelattachments": "JMVC/veeva_vault/models/attachments",
-			"vvmodeldocumentsharing": "JMVC/veeva_vault/models/document_sharing",
 			"vvmodelemailparticipants": "JMVC/veeva_vault/models/workflowActions/email_participants",
             "vvmodelupdateworkflowdates": "JMVC/veeva_vault/models/workflowActions/update_workflow_dates",
             "vvmodelpagelayout": "JMVC/veeva_vault/models/page_layout",
 			"vvmodelrimsaviewer": "JMVC/veeva_vault/models/rimSaViewer",
-
+			"tabpreference": "JMVC/veeva_vault/models/tab_preference",
             "vvmodelpublicdistribution": "JMVC/veeva_vault/models/distribution/publicdistribution/public_distribution",
 
 			//binder models
@@ -585,6 +624,7 @@ module.exports = {
 			"vvmodellifecycles": "JMVC/vault_admin/models/lifecycles",
 			"vvmodellifecyclestatecolors": "JMVC/vault_admin/models/lifecycle_state_colors",
 			"vvmodelrolesharingrules": "JMVC/vault_admin/models/role_sharing_rules",
+			"vvmodelworkflowrolerules": "JMVC/vault_admin/models/workflow_role_rules",
 			"vvmodelloginmessage": "JMVC/vault_admin/models/loginMessage",
 			"vvmodelobjectfield": "JMVC/vault_admin/models/object_field",
 			"vvmodelobjectlayout": "JMVC/vault_admin/models/object_layout",
@@ -612,7 +652,10 @@ module.exports = {
             "vvmodelsecuritysettings": "JMVC/vault_admin/models/security_settings",
             "vvmodelformula": "JMVC/vault_admin/models/formula",
             "vvmodelobjectlifecycles": "JMVC/vault_admin/models/object_lifecycles",
+            "vvmodelobjectworkflows": "JMVC/vault_admin/models/object_workflows",
             "vvmodelsearchfields": "JMVC/vault_admin/models/searchable_fields",
+			"vvmodeloverlays": "JMVC/vault_admin/models/overlays",
+            "vvmodelssoprofiles": "JMVC/vault_admin/models/sso_profiles",
 
 
 			// enterprise models
@@ -628,7 +671,6 @@ module.exports = {
 			"util": "annotate/base/UTIL",
 			"preference": "annotate/base/PREFERENCES",
 			"ufocus": "annotate/base/UFOCUS",
-			"comm": "annotate/base/COMM",
 			"events": "annotate/base/Events",
 			"pagechooser": "annotate/pdfdoc/PageChooser",
 			"pdfmulti": "annotate/pdfdoc/PDFMulti",
@@ -644,22 +686,17 @@ module.exports = {
 			"imgtextbutton": "annotate/guilib/ImgTextButton",
 			"radiogroup": "annotate/guilib/RadioGroup",
 			"textinput": "annotate/guilib/TextInput",
-			"textfield": "annotate/guilib/TextField",
 			"popupmenu": "annotate/guilib/PopupMenu",
 			"buttonmenu": "annotate/guilib/ButtonMenu",
 			"borders": "annotate/guilib/Borders",
 			"expandcollapsediv": "annotate/guilib/ExpandCollapseDiv",
-			"simplebutton": "annotate/guilib/SimpleButton",
 			"handle": "annotate/guilib/Handle",
-			"divframe": "annotate/guilib/DivFrame",
 			"movable": "annotate/guilib/Movable",
 			"boxextender": "annotate/guilib/BoxExtender",
-			"basedialog": "annotate/guilib/BaseDialog",
 			"multichooser": "annotate/guilib/MultiChooser",
 			"chkbox": "annotate/guilib/Chkbox",
 			"choice": "annotate/guilib/Choice",
 			"nchoice": "annotate/guilib/NChoice",
-			"hoveraction": "annotate/guilib/HoverAction",
 			"textarea": "annotate/guilib/TextArea",
 			"fixeddialog": "annotate/guilib/FixedDialogs",
 			"markbomb": "annotate/guilib/MarkBomb",
@@ -675,11 +712,10 @@ module.exports = {
 			"notesdisplay": "annotate/pdfnotes/NotesDisplay",
 			"pagemanager": "annotate/pdfnotes/PageManager",
 			"animator": "annotate/pdfnotes/Animator",
-			"finddialog": "annotate/pdfnotes/FindDialog",
 			"notepad": "annotate/pdfnotes/Notepad2",
 			"regionselection": "annotate/pdfnotes/RegionSelection",
 			"arrowselection": "annotate/pdfnotes/ArrowSelection",
-			"pdfsearch": "annotate/pdfnotes/PDFSearch",
+			"pdfsearch": "annotate/pdfnotes/PDFSearch2",
 			"config": "annotate/pdfnotes/config",
 			"veevastore": "annotate/veeva/Vault/Stores/Store",
 			"veevalink": "annotate/veeva/Vault/Models/Link",
@@ -688,26 +724,28 @@ module.exports = {
 			"notecontroller": "annotate/veeva/Vault/Controllers/NoteController",
 			"incominglinksdialog": "annotate/dialogs/IncomingLinksDialog",
 			"tagsdialog": "annotate/dialogs/TagsDialog2",
-			"tocdialog": "annotate/dialogs/TOCDialog",
-			"dialogs": "annotate/dialogs/DIALOGS",
+			"bookmark": "annotate/pdfdoc/Bookmark",
 			"bfa": "annotate/dialogs/BringForwardAnnotation",
 			"dialoghelper": "annotate/dialogs/DialogHelper",
 			"urlutils": "annotate/util/urlUtils",
 			"logger": "JMVC/veeva_vault/resources/scripts/veeva/logger",
 			"usergrouputils": "JMVC/veeva_vault/resources/scripts/veeva/utils/UserGroupUtils",
+			"DialogValidatorUtils": "components/common/util/DialogValidatorUtils",
 			"embeddedlinks": "annotate/pdfdoc/EmbeddedLink", 
 			"infocardlistview" : "annotate/veeva/Vault/Controllers/InfocardListView",
 			"delbubble": "annotate/pdfnotes/DelBubble",
             "pagemodel": "annotate/veeva/Vault/Models/PageModel",
 
-
+            /** Flowchart **/
+            "vvworkflowflowchart" : "JMVC/vault_admin/resources/scripts/veeva.ui.workflowFlowchart",
+            "vvdocumentwfflowchart" : "JMVC/vault_admin/resources/scripts/flowchart/veeva.ui.documentWfFlowchart",
+            "vvSVGUtil" : "JMVC/vault_admin/resources/scripts/SVGHelperUtil",
 
 			/** Vault Navigation Components **/
 			"component.page": "components/common/navigation/BasePage",
 			"component.listpage": "components/common/navigation/ListPage",
             "component.facetlistpage": "components/common/navigation/FacetListPage",
 			"view.listView" : "components/common/listView/views/ListView",
-
 
 			/** Vault Navigation Pages (Backbone based)**/
 			"component.grid" : 					"components/common/grid/views/Grid",
@@ -718,7 +756,10 @@ module.exports = {
 
 			"component.data.vaultDataSource":	"components/common/data/vaultDataSource",
 
+            "component.dialog": "components/common/dialog/Dialog",
+
 			"common.registry" : "components/common/util/Registry",
+			"common.fileUtil": "components/common/util/FileUtil",
 			"components.formatRegistry" : "components/common/formatter/FormatRegistry",
 			"components.dateFormats" : "components/common/formatter/DateFormats",
 			"components.linkFormatter" : "components/common/formatter/LinkFormatter",
@@ -732,8 +773,31 @@ module.exports = {
             "components.formattedTextFormatter": "components/common/formatter/FormattedTextFormatter",
 			"components.solrFormatter" : "components/common/formatter/SolrFormatter",
 
-			/* StyleGuide */
+            /** VOF Components **/
+            "components.vof.service.breadcrumbBuilder": "components/vof/service/BreadcrumbBuilder",
+            "components.vof.recordLcActionRegistry": "components/vof/registry.vof.lcActions",
 
+            "common.tooltip.help": "components/common/tooltip/help/common.tooltip.help",
+            //
+            "document.view.manager": "components/document/document.view.manager",
+            //
+            "document.actions": "components/document/actions/document.actions",
+            "document.actions.sendAsLink": "components/document/actions/document.actions.sendAsLink",
+            //
+            "document.sharing.model": "components/document/sharing/models/document.sharing.model",
+            "document.sharing.roles": "components/document/sharing/models/document.sharing.roles",
+            "document.sharing.mini": "components/document/sharing/views/document.sharing.mini",
+            "document.sharing.stub": "components/document/sharing/views/document.sharing.stub",
+            "document.sharing.page": "components/document/sharing/views/document.sharing.page",
+            "document.sharing.add": "components/document/sharing/views/document.sharing.add",
+            "document.sharing.row": "components/document/sharing/views/document.sharing.row",
+            //
+            "session": "components/session/session",
+
+            /** Workflow Components**/
+            "lifecycle.workflow.startDialogDisplay" : "components/lifecycle/workflow/lifecycle.workflow.startDialogDisplay",
+
+            /* StyleGuide */
 
 			/* Vault Pages */
 			"vault.dashboards" : "scripts/packages/pages/vault.dashboards",
@@ -1015,5 +1079,4 @@ module.exports = {
 				"noGlobal": true
 			}
 		}
-	}
-
+	};

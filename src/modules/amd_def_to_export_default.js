@@ -10,8 +10,9 @@ var pathCache = require('../vault-all');
 // export default Component
 
 module.exports = function convertAmdDefToExportDefault(body, file) {
+    var non_AMD_module_msg = "non_AMD_module_definition_format found in "+file;
     if(body.length > 1){
-         console.log('extra_statements_after_AMD_define found in file :', file);
+        throw new Error(non_AMD_module_msg);
     }
   body = body.map(function(o) {
     if (!o) {
@@ -21,41 +22,34 @@ module.exports = function convertAmdDefToExportDefault(body, file) {
         args,
         params,
         callbackExpr;
-    try {
-      n.ExpressionStatement.assert(o);
-      n.CallExpression.assert(o.expression);
-      assert(o.expression.callee.name === "define" || o.expression.callee.name === "require", "non_AMD_module_definition_format found");
+      assert(o.type === "ExpressionStatement", non_AMD_module_msg);
+      assert(o.expression.type === "CallExpression", non_AMD_module_msg);
+      assert(o.expression.callee.name === "define" || o.expression.callee.name === "require", non_AMD_module_msg);
       args = o.expression.arguments ||[];
-      assert(args.length === 2 || args.length === 1, "AMD_module_define_has_none_standard_arguments");
+      assert(args.length === 2 || args.length === 1, "AMD_module_define_has_none_standard_arguments found in "+file);
       callbackExpr = args[args.length - 1];
-      n.FunctionExpression.assert(callbackExpr);
+      n.FunctionExpression.assert(callbackExpr, "invalid_file_found in file: "+file);
       if(args.length === 2){
           depsList = args[0].elements;
       }
       params = callbackExpr.params || [];
       var ret = generateImports(params, depsList, file);
-      generateExportFromFuncBody(ret, callbackExpr.body, file);
-    } catch(e) {
-      return o;
-    }
-    return ret;
+      return ret.concat(generateExportFromFuncBody(callbackExpr.body, file));
   });
     return _.flatten(body);
 };
 
-function generateExportFromFuncBody(body, funcBody, file){
-    n.BlockStatement.assert(funcBody);
-    for (var i = 0; i < funcBody.body.length; i++) {
-        var stmt = funcBody.body[i];
-        if(stmt.type === "ReturnStatement"){
-            body.push(b.exportDeclaration(true, stmt.argument));//last return should default export
-            if(i !== funcBody.body.length -1){
-                console.log("return_module_value_at_middle in file :", file);
-            }
+function generateExportFromFuncBody(funcBody, file){
+    n.BlockStatement.assert(funcBody, 'invalid_file_found in file:'+file);
+    return funcBody.body.map(function(o){
+        if(o.type === 'ExpressionStatement' && o.expression.value === "use strict"){
+            return null;
+        }else if(o.type === "ReturnStatement"){
+            return b.exportDeclaration(true, o.argument);//last return should default export
         }else{
-            body.push(stmt);
+            return o;
         }
-    }
+    })
 }
 
 function generateImports(params, deps, file){
@@ -79,9 +73,10 @@ function generateImports(params, deps, file){
         }
     };
     if(p < deps.length){
-        console.log('none_exposed_module found in file: ', file);
+        console.log(('empty_import found in file: '+file).yellow);
         while(p < deps.length){
-            console.log('xxxxxxxxx>>>>', pathCache.paths[deps[p].value]);
+            var declarator = b.importDeclaration([], b.literal(pathCache.paths[deps[p].value]));
+            imports.push(declarator);
             p++;
         }
     }
