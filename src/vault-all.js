@@ -1,5 +1,4 @@
-module.exports = {
-		"baseUrl": "/Users/larryhe/workspace/vault.git/WzlUI/src/main/webapp/",
+	module.exports={
 		"paths": {
 			/***** START: common base packages; these modules will be packaged in vault.common.base.js and will be excluded from all other production packages *****/
 			/***** IMPORTANT: we want to sync and control the size of the common.base production package so do not add anything additional packages here without consulting with Tudo Nguyen/Chris Rink *****/
@@ -187,6 +186,7 @@ module.exports = {
             
 			"entryCriteriaRuleActionWidget": "JMVC/veeva_vault/resources/scripts/veeva/rulesWidget/EntryCriteriaRuleActionWidget",
 			"esignaturePagesRuleActionWidget": "JMVC/veeva_vault/resources/scripts/veeva/rulesWidget/EsignaturePagesRuleActionWidget",
+            "conditionalFieldCategoryRuleActionWidget": "JMVC/veeva_vault/resources/scripts/veeva/rulesWidget/ConditionalFieldCategoryRuleActionWidget",
 			"userActionRuleActionWidget": "JMVC/veeva_vault/resources/scripts/veeva/rulesWidget/UserActionsRuleActionWidget",
 			"entryActionsRuleActionWidget": "JMVC/veeva_vault/resources/scripts/veeva/rulesWidget/EntryActionsRuleActionWidget",
 			"objectEntryActionsRuleActionWidget": "JMVC/veeva_vault/resources/scripts/veeva/rulesWidget/ObjectEntryActionsRuleActionWidget",
@@ -316,6 +316,9 @@ module.exports = {
             "vvcontrollerupdateworkflowdates": "JMVC/veeva_vault/controllers/workflowActions/update_workflow_dates_controller",
             "vvcontrollertasklist": "JMVC/veeva_vault/controllers/task_list_controller",
 			"vvcontrollercreatepresentation": "JMVC/veeva_vault/controllers/create_presentation_controller",
+			"vvcontrollerselectmarkets": "JMVC/veeva_vault/controllers/bulkAction/select_markets_controller",
+			"vvcontrollerselectapplications": "JMVC/veeva_vault/controllers/bulkAction/select_applications_controller",
+			"vvcontrollerrimbulkcreateconfim": "JMVC/veeva_vault/controllers/bulkAction/rim_bulk_create_confirm_controller",
 
          /* Generic layout controllers */
 			"vvcontrollerobjectrecord": "JMVC/vault_admin/controllers/objects/new_layout/object_record_controller",
@@ -333,13 +336,14 @@ module.exports = {
 			"vofwidgetsrelateddocs": "JMVC/vofWidgets/relatedDocs",
             "vofwidgetsbinders": "JMVC/vofWidgets/binders",
 			"vofruleswidget": "JMVC/vofWidgets/vofRulesWidget",
-			"vofwftimelinewidget": "JMVC/vofWidgets/wfTimeline",
 			"stepType": "JMVC/veeva_vault/resources/scripts/veeva/workflow/stepType/scripts/stepType",
 			"vofTasks": "JMVC/vofWidgets/tasks",
 			"objectWorkflowUserTaskNotificationAndReminders": "JMVC/veeva_vault/resources/scripts/veeva/workflow/userTaskNotificationAndReminders/scripts/objectWorkflowUserTaskNotificationAndReminders",
 			"userTaskNotificationAndRemindersRow": "JMVC/veeva_vault/resources/scripts/veeva/workflow/userTaskNotificationAndRemindersRow/scripts/userTaskNotificationAndRemindersRow",
 			"widgetList": "JMVC/veeva_vault/resources/scripts/veeva/workflow/widgetList/scripts/widgetList",
 			"userTaskVerdict": "JMVC/veeva_vault/resources/scripts/veeva/workflow/userTaskVerdict/scripts/userTaskVerdict",
+			"wfTimelinewidget": "JMVC/veeva_vault/resources/scripts/veeva/workflow/timeline/scripts/timeline",
+			"conditionalFieldBuilder": "JMVC/veeva_vault/resources/scripts/veeva/conditionalFieldBuilder",
 
 			/*
 			 * Vof related controller (separate b/c now they're available in both
@@ -394,6 +398,7 @@ module.exports = {
 			"vvcontrollergroupsuserswizard": "JMVC/vault_admin/controllers/usersGroups/groups_users_wizard_controller",
 			"vvcontrollerusergroupmember": "JMVC/vault_admin/controllers/usersGroups/user_group_member_controller",
 			"admin.page.UserList": "JMVC/vault_admin/controllers/usersGroups/admin.page.UserList",
+			"admin.page.DelegateAccessList": "JMVC/vault_admin/controllers/usersGroups/admin.page.DelegateAccessList",
 			"vvcontrollerusersdetail": "JMVC/vault_admin/controllers/usersGroups/users_detail_controller",
 			"vvcontrollerusersgroupnav": "JMVC/vault_admin/controllers/usersGroups/users_groups_controller",
 			"vvcontrollerusersgroupslist": "JMVC/vault_admin/controllers/usersGroups/users_groups_list_controller",
@@ -401,6 +406,7 @@ module.exports = {
 			"vvcontrollerusersoverrides": "JMVC/vault_admin/controllers/usersGroups/users_overrides_controller",
 			"vvcontrolleruserssites": "JMVC/vault_admin/controllers/usersGroups/users_sites_controller",
 			"vvcontrollerusersvaults": "JMVC/vault_admin/controllers/usersGroups/users_vaults_controller",
+			"vvcontrollerusersdelegateaccess": "JMVC/vault_admin/controllers/usersGroups/users_delegate_access_controller",
 			"vvcontrollerdomainuseradmin": "JMVC/vault_admin/controllers/usersGroups/domain_user_admin_controller",
 			"vvcontrollerimportuserswizard": "JMVC/vault_admin/controllers/usersGroups/import_users_wizard_controller",
             "vvcontrolleraddselectedusers": "JMVC/vault_admin/controllers/usersGroups/add_selected_users_controller",
@@ -468,6 +474,7 @@ module.exports = {
             "vvcontrollerobjectworkflowlist": "JMVC/vault_admin/controllers/objectWorkflows/object_workflow_list_controller",
             "vvcontrollerobjectworkflowdetail": "JMVC/vault_admin/controllers/objectWorkflows/object_workflow_detail_controller",
 			"vvcontrollerobjectworkflowstep": "JMVC/vault_admin/controllers/objectWorkflows/object_workflow_step_controller",
+			"vvcontrollerobjectwadtaskdialog": "JMVC/veeva_vault/controllers/objectWorkflows/object_wad_task_dialog_controller",
 
 			"vvcontrollerlifecyclestatecolors": "JMVC/vault_admin/controllers/lifecycles/lifecycle_state_colors_controller",
 			"vvcontrollerroles": "JMVC/vault_admin/controllers/lifecycles/roles_controller",
@@ -496,6 +503,7 @@ module.exports = {
 			"vvcontrollervofobjectpagelayoutrelateddata": "JMVC/vault_admin/controllers/objects/vof_object_page_layout_related_data_controller",
 			"vvcontrollervofobjectpagelayoutrelatedobject": "JMVC/vault_admin/controllers/objects/vof_object_page_layout_related_object_controller",
 			"vvcontrollervofobjectpagelayoutrelateddoc": "JMVC/vault_admin/controllers/objects/vof_object_page_layout_related_doc_controller",
+            "vvcontrollervofobjectpagelayoutedlitemmatcheddoc": "JMVC/vault_admin/controllers/objects/vof_object_page_layout_edl_item_matched_doc_controller",
 			"vvcontrollervofobjectsecurity": "JMVC/vault_admin/controllers/objects/vof_object_security_controller",
 			"vvcontrollervofobjectsecuritydetail": "JMVC/vault_admin/controllers/objects/vof_object_security_detail_controller",
             "vvconditionbuildercontroller": "JMVC/vault_admin/controllers/objects/ConditionBuilderController",
@@ -516,6 +524,7 @@ module.exports = {
             "action.vof.task": "JMVC/veeva_vault/controllers/vof/action.vof.task",
 			"action.vof.report": "JMVC/veeva_vault/controllers/vof/action.vof.report",
             "action.vof.copyrecord": "JMVC/veeva_vault/controllers/vof/action.vof.copyVofRecord",
+            "action.vof.tmf.edlCreationAction": "JMVC/veeva_vault/controllers/vof/tmf/action.vof.tmf.edlCreationAction",
 
 
 			"vvcontrollerrelationshipdetail": "JMVC/vault_admin/controllers/relationships/relationship_detail_controller",
@@ -601,6 +610,7 @@ module.exports = {
 			"vvmodelrimsaviewer": "JMVC/veeva_vault/models/rimSaViewer",
 			"tabpreference": "JMVC/veeva_vault/models/tab_preference",
             "vvmodelpublicdistribution": "JMVC/veeva_vault/models/distribution/publicdistribution/public_distribution",
+			"vvmodeledl": "JMVC/veeva_vault/models/edl",
 
 			//binder models
 			"vvmodelbinders": "JMVC/vault_binders/models/binders",
@@ -731,6 +741,7 @@ module.exports = {
 			"logger": "JMVC/veeva_vault/resources/scripts/veeva/logger",
 			"usergrouputils": "JMVC/veeva_vault/resources/scripts/veeva/utils/UserGroupUtils",
 			"DialogValidatorUtils": "components/common/util/DialogValidatorUtils",
+			"WebWorkflowUtils": "components/common/util/workflow/WebWorkflowUtils",
 			"embeddedlinks": "annotate/pdfdoc/EmbeddedLink", 
 			"infocardlistview" : "annotate/veeva/Vault/Controllers/InfocardListView",
 			"delbubble": "annotate/pdfnotes/DelBubble",
@@ -739,6 +750,8 @@ module.exports = {
             /** Flowchart **/
             "vvworkflowflowchart" : "JMVC/vault_admin/resources/scripts/veeva.ui.workflowFlowchart",
             "vvdocumentwfflowchart" : "JMVC/vault_admin/resources/scripts/flowchart/veeva.ui.documentWfFlowchart",
+            "vvobjectwfflowchart" : "JMVC/vault_admin/resources/scripts/flowchart/veeva.ui.objectWfFlowchart",
+            "vvflowchartsection" : "components/lifecycle/workflow/flowchartManager/scripts/flowchartManager",
             "vvSVGUtil" : "JMVC/vault_admin/resources/scripts/SVGHelperUtil",
 
 			/** Vault Navigation Components **/
@@ -750,6 +763,7 @@ module.exports = {
 			/** Vault Navigation Pages (Backbone based)**/
 			"component.grid" : 					"components/common/grid/views/Grid",
 			"component.grid.gridModel" : 	"components/common/grid/models/gridModel",
+			"component.grid.recordModel" : 	"components/common/grid/models/recordModel",
 			"component.columnEditor" : 			"components/common/grid/views/columnEditor",
 			"component.userCard" : 			"components/common/grid/views/userCard",
 			"component.widgethelper.dropdownHelper" : "components/common/widgethelper/dropdownHelper",
@@ -764,6 +778,7 @@ module.exports = {
 			"components.dateFormats" : "components/common/formatter/DateFormats",
 			"components.linkFormatter" : "components/common/formatter/LinkFormatter",
 			"components.actionLinkFormatter" : "components/common/formatter/ActionLinkFormatter",
+			"components.actionTextFormatter" : "components/common/formatter/ActionTextFormatter",
 			"components.textlistFormatter" : "components/common/formatter/TextListFormatter",
 			"components.textFormatter" : "components/common/formatter/TextFormatter",
 			"components.objectFormatter" : "components/common/formatter/ObjectFormatter",
@@ -772,9 +787,11 @@ module.exports = {
 			"components.removeFormatter" : "components/common/formatter/RemoveFormatter",
             "components.formattedTextFormatter": "components/common/formatter/FormattedTextFormatter",
 			"components.solrFormatter" : "components/common/formatter/SolrFormatter",
+			"components.numberFormatter": "components/common/formatter/NumberFormatter",
 
             /** VOF Components **/
             "components.vof.service.breadcrumbBuilder": "components/vof/service/BreadcrumbBuilder",
+            "components.vof.service.objectListViewService": "components/vof/service/ObjectListViewService",
             "components.vof.recordLcActionRegistry": "components/vof/registry.vof.lcActions",
 
             "common.tooltip.help": "components/common/tooltip/help/common.tooltip.help",

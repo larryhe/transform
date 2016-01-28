@@ -27,14 +27,22 @@ module.exports = function convertAmdDefToExportDefault(body, file) {
       assert(o.expression.callee.name === "define" || o.expression.callee.name === "require", non_AMD_module_msg);
       args = o.expression.arguments ||[];
       assert(args.length === 2 || args.length === 1, "AMD_module_define_has_none_standard_arguments found in "+file);
-      callbackExpr = args[args.length - 1];
-      n.FunctionExpression.assert(callbackExpr, "invalid_file_found in file: "+file);
       if(args.length === 2){
-          depsList = args[0].elements;
+            depsList = args[0].elements;
+            callbackExpr = args[args.length - 1];
+            assert("FunctionExpression" === callbackExpr.type, "invalid_file_found in file: "+file);
+            params = callbackExpr.params || [];
+            var ret = generateImports(params, depsList, file);
+            return ret.concat(generateExportFromFuncBody(callbackExpr.body, file));
+      }else{
+          var expr = args[0];
+          assert(expr.type === "FunctionExpression" || expr.type === "ArrayExpression", "invalid_file_found in file: "+file);
+          if(expr.type === "FunctionExpression"){
+              return generateExportFromFuncBody(expr.body, file);
+          }else{
+              return generateImports([], expr.elements, file);
+          }
       }
-      params = callbackExpr.params || [];
-      var ret = generateImports(params, depsList, file);
-      return ret.concat(generateExportFromFuncBody(callbackExpr.body, file));
   });
     return _.flatten(body);
 };
@@ -58,12 +66,16 @@ function generateImports(params, deps, file){
         var paramExpr = params[p];
         var name = deps[p].value;
         if(name.indexOf("hbs!") === 0){
-            name = name.replace(/(hbs!)(.*)/, "$2.$1");
+            name = name.replace(/((hbs)!)(.*)/, "$3.$2");
         }else{
             if(name === 'require'){
                 console.log('require_call_found in file: ', file);
             }
             name = pathCache.paths[name];
+            if(!name){
+                name = deps[p].value;
+                console.log(('name_not_registered [ ' + name + '] found in file: '+file).blue);
+            }
         }
         if(name){
             var declarator = b.importDeclaration([
@@ -75,7 +87,12 @@ function generateImports(params, deps, file){
     if(p < deps.length){
         console.log(('empty_import found in file: '+file).yellow);
         while(p < deps.length){
-            var declarator = b.importDeclaration([], b.literal(pathCache.paths[deps[p].value]));
+            var name = pathCache.paths[deps[p].value];
+            if(!name){
+                name = deps[p].value;
+                console.log(('name_not_registered [ ' + name + '] found in file: '+file).blue);
+            }
+            var declarator = b.importDeclaration([], b.literal(name));
             imports.push(declarator);
             p++;
         }

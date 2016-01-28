@@ -7,6 +7,13 @@ var colors = require('colors');
 var Promise = require('bluebird');
 var pathCache = require('./vault-all');
 
+pathCache.paths["common.base"]= "scripts/packages/common.base";
+pathCache.paths["docviewer.main"]= "scripts/packages/docviewer.main";
+pathCache.paths["enterprise.main"]= "scripts/packages/enterprise.main";
+pathCache.paths["vault.main"]= "scripts/packages/vault.main";
+
+pathCache.baseUrl = "/Users/larryhe/workspace/vault.git/WzlUI/src/main/webapp/";
+
 var middlewares = [
   require('./modules/strip-use-stricts'),
   require('./modules/amd_def_to_export_default')
@@ -20,7 +27,9 @@ function convert(opts) {
     var count = 0;
     for(var file in all){
         count++
-        processFile(pathCache.baseUrl + all[file] + ".js");
+        // if(file === "vvcontrollerpagelayouts"){
+            processFile(pathCache.baseUrl + all[file] + ".js");
+        // }
     }
     console.log('totally processed '+count+' files');
 }
@@ -53,7 +62,12 @@ function processFile(file) {
         fs.writeFileSync(file, _.trimLeft(recast.print(ast).code));
         console.log(("successfully transformed "+file).green);
       }catch(e){
-          console.log(('Error_happening ' + e.message).red);
+          var type = "non_AMD_module_definition_format";
+          if(e.message.indexOf(type) === 0){
+            console.log((e.message).yellow);
+          }else{
+            console.log(('Error_happening ' + e.message + ' in file ' + file).red);
+          }
       }
     // console.log(recast.print(ast).code);
 }
