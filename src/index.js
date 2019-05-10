@@ -5,14 +5,7 @@ var b      = recast.types.builders;
 var fs     = require('fs');
 var colors = require('colors');
 var Promise = require('bluebird');
-var pathCache = require('./vault-all');
 
-pathCache.paths["common.base"]= "scripts/packages/common.base";
-pathCache.paths["docviewer.main"]= "scripts/packages/docviewer.main";
-pathCache.paths["enterprise.main"]= "scripts/packages/enterprise.main";
-pathCache.paths["vault.main"]= "scripts/packages/vault.main";
-
-pathCache.baseUrl = "/Users/larryhe/workspace/vault.git/WzlUI/src/main/webapp/";
 
 var middlewares = [
   require('./modules/strip-use-stricts'),
